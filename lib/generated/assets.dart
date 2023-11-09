@@ -6,18 +6,8 @@ class Assets {
       'assets/fonts/ABeeZee/ABeeZee-Italic.ttf';
   static const String aBeeZeeABeeZeeRegular =
       'assets/fonts/ABeeZee/ABeeZee-Regular.ttf';
-  static const String lottieAccountCreated =
-      'assets/lottie/accountCreated.json';
-  static const String lottieEmptyCart = 'assets/lottie/empty_cart.json';
-  static const String lottieLoading = 'assets/lottie/loading.json';
   static const String lottieNoData = 'assets/lottie/noData.json';
-  static const String lottieNoSearch = 'assets/lottie/no_search.json';
-  static const String lottieOffline = 'assets/lottie/offline.json';
-  static const String lottiePickup = 'assets/lottie/pickup.json';
   static const String lottieRating = 'assets/lottie/rating.json';
   static const String lottieSearch = 'assets/lottie/search.json';
-  static const String lottieServerError = 'assets/lottie/serverError.json';
-  static const String lottieStoreClose = 'assets/lottie/store_close.json';
-  static const String lottieSuccess = 'assets/lottie/success.json';
   static const String lumovies = '.env';
 }

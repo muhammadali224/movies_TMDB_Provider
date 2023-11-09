@@ -6,34 +6,33 @@ class MoviesDetailsData {
 
   MoviesDetailsData(this.crud);
 
-  addToFavorite(String mediaType, int mediaId) async {
-    var response = await crud.postData(
-        "${AppLink.server}/account/${AppLink.accountId}/favorite", {
+  changeFavorite(String mediaType, int mediaId, String favState) async {
+    var response = await crud
+        .postData("${AppLink.server}/account/${AppLink.accountId}/favorite", {
       "media_type": mediaType,
       "media_id": mediaId.toString(),
-      "favorite": "true"
+      "favorite": favState,
     });
+
     return response;
   }
 
-  removeFromFavorite(String mediaType, int mediaId) async {
+  addRating(double rateVal, int mediaId, String mediaType) async {
     var response = await crud.postData(
-        "${AppLink.server}/account/${AppLink.accountId}/favorite", {
-      "media_type": mediaType,
-      "media_id": mediaId.toString(),
-      "favorite": "false"
-    });
+        "${AppLink.server}/$mediaType/$mediaId/rating",
+        {"value": rateVal.toString()});
     return response;
   }
 
-  addRating(int mediaId) async {
-    var response = await crud.postData(AppLink.discoverMovies, {});
-    return response;
-  }
-
-  getAccountState(int id) async {
+  deleteRating(int mediaId, String mediaType) async {
     var response =
-        await crud.getData("${AppLink.server}/movie/$id/account_states");
+        await crud.deleteData("${AppLink.server}/$mediaType/$mediaId/rating");
+    return response;
+  }
+
+  getAccountState(int id, String mediaType) async {
+    var response =
+        await crud.getData("${AppLink.server}/$mediaType/$id/account_states");
     return response;
   }
 }

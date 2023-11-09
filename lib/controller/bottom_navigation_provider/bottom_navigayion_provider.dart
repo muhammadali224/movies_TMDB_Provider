@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:icon_broken/icon_broken.dart';
 
 import '../../data/model/bottom_nav_model/bottom_nav_model.dart';
+import '../../view/screen/favorite/favorite.dart';
 import '../../view/screen/home/home.dart';
+import '../../view/screen/rating/rating.dart';
 import '../../view/screen/search/search.dart';
 
 class BottomNavigationBarProvider extends ChangeNotifier {
@@ -10,8 +12,8 @@ class BottomNavigationBarProvider extends ChangeNotifier {
   List<Widget> listTab = [
     const HomePage(),
     const SearchScreen(),
-    const Center(child: Text("fav")),
-    const Center(child: Text("rate")),
+    const Favorite(),
+    const Rating(),
   ];
 
   List<BottomNavigationModel> bottomAppbar = [

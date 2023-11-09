@@ -5,13 +5,15 @@ class MaterialCustomButton extends StatelessWidget {
   final String title;
   final Color color;
   final Color? textColor;
+  final double? fontSize;
 
   const MaterialCustomButton(
       {super.key,
       required this.onPressed,
       required this.title,
       required this.color,
-      this.textColor});
+      this.textColor,
+      this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class MaterialCustomButton extends StatelessWidget {
             Text(
               title,
               style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                  fontSize: fontSize,
                   fontWeight: FontWeight.w500,
                   color: textColor ?? Colors.white),
             ),

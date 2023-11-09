@@ -5,7 +5,9 @@ import 'package:provider/provider.dart';
 
 import 'controller/bottom_navigation_provider/bottom_navigayion_provider.dart';
 import 'controller/details_provider/details_provider.dart';
+import 'controller/favorite_provider/favorite_provider.dart';
 import 'controller/home_provider/home_provider.dart';
+import 'controller/rated_provider/rated_provider.dart';
 import 'controller/search_provider/search_provider.dart';
 import 'core/constant/theme.dart';
 import 'view/screen/main/mian_screen.dart';
@@ -21,6 +23,8 @@ void main() async {
           create: (context) => BottomNavigationBarProvider()),
       ChangeNotifierProvider(create: (context) => SearchProvider()),
       ChangeNotifierProvider(create: (context) => DetailsProvider()),
+      ChangeNotifierProvider(create: (context) => FavoriteProvider()),
+      ChangeNotifierProvider(create: (context) => RatedProvider()),
     ],
     child: const MyApp(),
   ));

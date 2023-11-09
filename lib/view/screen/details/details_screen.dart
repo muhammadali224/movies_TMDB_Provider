@@ -7,6 +7,7 @@ import '../../../core/extension/space_extension.dart';
 import '../../../data/model/movie_model/movie_model.dart';
 import '../../widget/details_screen/back_button_container.dart';
 import '../../widget/details_screen/borded_container.dart';
+import '../../widget/details_screen/rate_dialog.dart';
 import '../../widget/shred_component/cached_network.dart';
 import '../../widget/shred_component/rating_row.dart';
 
@@ -27,7 +28,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
     final detailsProvider =
         Provider.of<DetailsProvider>(context, listen: false);
     print(widget.movieModel.id);
-    detailsProvider.getState(widget.movieModel.id!);
+    detailsProvider.getState(
+        widget.movieModel.id!, detailsProvider.getMediaType(widget.movieModel));
   }
 
   @override
@@ -39,11 +41,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
           backgroundColor: Colors.blueGrey,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-          onPressed: () => controller.isFavorite
-              ? controller.removeFromFavorite(
-                  context, widget.movieModel.id!, widget.movieModel.mediaType!)
-              : controller.addToFavorite(
-                  context, widget.movieModel.id!, widget.movieModel.mediaType!),
+          onPressed: () => controller.changeFavorite(
+              context,
+              widget.movieModel.id!,
+              controller.getMediaType(widget.movieModel)),
           child: Icon(
             controller.isFavorite
                 ? Icons.favorite_rounded
@@ -84,12 +85,28 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 padding: const EdgeInsets.all(10),
                 child: Column(
                   children: [
+                    10.height,
+                    ListTile(
+                      onTap: () => showRatingDialog(
+                          context,
+                          widget.movieModel.id!,
+                          controller.getMediaType(widget.movieModel)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      tileColor: Colors.blueGrey,
+                      title: Text("Your Rating",
+                          style: Theme.of(context).textTheme.titleLarge),
+                      trailing: RatingRow(
+                        rateNumber: "${controller.rating}/5",
+                      ),
+                    ),
+                    10.height,
                     Text("OverView",
                         style: Theme.of(context).textTheme.headlineLarge),
                     10.height,
                     Text(widget.movieModel.overview!,
                         style: const TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.w400)),
+                            fontSize: 22, fontWeight: FontWeight.w400)),
                     20.height,
                     Row(
                       children: [

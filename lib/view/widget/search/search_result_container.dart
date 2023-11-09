@@ -7,8 +7,10 @@ import '../shred_component/cached_network.dart';
 
 class SearchResultContainer extends StatelessWidget {
   final MovieModel movieModel;
+  final bool? viewType;
 
-  const SearchResultContainer({super.key, required this.movieModel});
+  const SearchResultContainer(
+      {super.key, required this.movieModel, this.viewType});
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +27,14 @@ class SearchResultContainer extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.blueGrey, borderRadius: BorderRadius.circular(15)),
         margin: const EdgeInsets.all(15),
-        // padding: const EdgeInsets.all(10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
               child: CustomCachedNetwork(
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      bottomLeft: Radius.circular(15)),
                   imageUrl:
                       "${movieModel.posterPath ?? movieModel.backdropPath}"),
             ),
@@ -45,7 +49,8 @@ class SearchResultContainer extends StatelessWidget {
                       movieModel.name ?? movieModel.title ?? "name",
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    Text(movieModel.mediaType!.capitalizeFirst())
+                    if (viewType == null || viewType == true)
+                      Text(movieModel.mediaType!.capitalizeFirst())
                   ],
                 ),
               ),

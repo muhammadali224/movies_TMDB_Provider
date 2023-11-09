@@ -18,6 +18,7 @@ class BottomNavBar extends StatelessWidget {
       unselectedItemColor: Colors.blueGrey,
       selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
       onTap: (index) {
+        Navigator.of(context).popUntil((route) => route.isFirst);
         controller.updateIndex(index);
       },
       items: [

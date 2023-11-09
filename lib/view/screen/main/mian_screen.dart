@@ -12,8 +12,8 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const BottomNavBar(),
       body: Consumer<BottomNavigationBarProvider>(
-        builder: (context, controller, child) => Container(
-            child: controller.listTab.elementAt(controller.currentIndex)),
+        builder: (context, controller, child) =>
+            controller.listTab[controller.currentIndex],
       ),
     );
   }

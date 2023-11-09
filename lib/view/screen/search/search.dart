@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 
 import '../../../controller/search_provider/search_provider.dart';
 import '../../../core/function/valid_input.dart';
-import '../../widget/search/search_result_container.dart';
 import '../../widget/shred_component/handling_data_search.dart';
 import '../../widget/shred_component/input_form_field.dart';
+import '../../widget/shred_component/listview_tab.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -33,13 +33,9 @@ class SearchScreen extends StatelessWidget {
               HandlingDataSearch(
                 searchState: controller.searchState,
                 resultWidget: Expanded(
-                  child: ListView.builder(
-                      itemCount: controller.searchResult.length,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) => SearchResultContainer(
-                            movieModel: controller.searchResult[index],
-                          )),
-                ),
+                    child: ListViewTab(
+                  movieModel: controller.searchResult,
+                )),
               ),
             ],
           ),
