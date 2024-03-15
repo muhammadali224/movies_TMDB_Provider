@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:lumovies/view/widget/home_widget/section_list.dart';
+import 'section_list.dart';
 
 import '../../../data/model/movie_model/movie_model.dart';
 import '../shred_component/handling_error.dart';
